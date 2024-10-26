@@ -26,7 +26,7 @@ public class ClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //uploadClientService.uploadFile("LICENSE");
-        downloadClientService.downloadFile("LICENSE");
+        //uploadClientService.uploadFile("img.png.png");
+        downloadClientService.downloadFile("img.png.png");
     }
 }
