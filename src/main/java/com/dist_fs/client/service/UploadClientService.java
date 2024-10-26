@@ -5,7 +5,6 @@ import com.dist_fs.client.beans.model.UploadRequest;
 import com.dist_fs.client.beans.model.UploadResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -61,10 +60,10 @@ public class UploadClientService {
                     // Prepare headers
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-                    headers.set("Chunk-Id", chunk.getChunkId().toString()); // Include the chunk ID
+                    headers.set("chunkId", chunk.getChunkId().toString()); // Include the chunk ID
 
                     // Create HttpEntity for the request
-                    HttpEntity<ByteArrayResource> requestEntity = new HttpEntity<>(new ByteArrayResource(chunkData), headers);
+                    HttpEntity<byte[]> requestEntity = new HttpEntity<>(chunkData, headers);
 
                     // Upload the chunk to the corresponding URL
                     ResponseEntity<String> response = restTemplate.postForEntity(uploadUrl, requestEntity, String.class);
