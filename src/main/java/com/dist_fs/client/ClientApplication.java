@@ -1,5 +1,6 @@
 package com.dist_fs.client;
 
+import com.dist_fs.client.service.DownloadClientService;
 import com.dist_fs.client.service.UploadClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +14,9 @@ public class ClientApplication implements CommandLineRunner {
     @Autowired
     private UploadClientService uploadClientService;
 
+    @Autowired
+    private DownloadClientService downloadClientService;
+
     public static void main(String[] args) {
         new SpringApplicationBuilder(ClientApplication.class)
                 .web(WebApplicationType.NONE) // Disable web server
@@ -22,6 +26,7 @@ public class ClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        uploadClientService.uploadFile("LICENSE");
+        //uploadClientService.uploadFile("LICENSE");
+        downloadClientService.downloadFile("LICENSE");
     }
 }
